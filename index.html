@@ -23,13 +23,13 @@
             background-color: rgb(190, 255, 208);
         }
 
-        textarea {
-            padding: 10px;
+        textarea : 10px;
             border-radius: 6px;
             width: 100%;
             max-width: 300px;
         }
-
+{
+            padding
         #inicioText {
             margin-bottom: 20px;
         }
@@ -140,10 +140,11 @@
         let textoFinal = document.querySelector("#textofinal")
         
         enviar.addEventListener("click", ()=>{
-            let material = texto.value
+            let material = texto.value.toLowerCase()
             tela1.style.display = "none"
             tela2.style.display = "block"
-            textoFinal.innerText += " " + material + " \n🫣"
+            textoFinal.innerText += " " + material + "... "
+            textoFinal.innerText += "\n\n Porque eu realmente gosto de você. \n 😊"
         })
 
 
