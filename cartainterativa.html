@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta Interativa</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
+
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            background-color: rgb(190, 255, 208);
+        }
+
+        textarea {
+            padding: 10px;
+            border-radius: 6px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        #inicioText {
+            margin-bottom: 20px;
+        }
+
+        #inicioButton{
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 2.0s ease;
+        }
+
+        #inicio{
+            display: block;
+        }
+
+        #tela1{
+            display: none;
+        }
+
+        #tela2{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="inicio">
+        <p id="inicioText">
+
+        </p>
+        <button id="inicioButton">
+            Continuar
+        </button>
+    </div>
+
+    <div id="tela1">
+        <p>
+            O que você acha ser mais resistente em todo o universo?
+        </p>
+        <textarea id="texto">Escreva aqui</textarea> 
+        <br>
+        <br>
+        <button id="enviar"> 
+            Continuar
+        </button>
+    </div>
+
+    <div id="tela2">
+
+        <p id="textofinal">
+            Então espero que o nosso amor seja tão resistente quanto 
+        </p>
+
+    </div>
+
+    <script>
+
+        //TELA INICIAL 
+
+        let inicio = document.querySelector("#inicio")
+        let inicioText = document.querySelector("#inicioText")
+        let inicioTextValue = "Oi, fulaaaaana... 👋😊"
+        let inicioTextValueContainer = ''
+        let inicioTextIndice = 0
+        let inicioTextState = "working"
+        let inicioButton = document.querySelector("#inicioButton")
+       
+        let intervalo = setInterval(()=>{
+            if(inicioTextValue.length !== inicioTextValueContainer.length){
+                inicioTextValueContainer += inicioTextValue[inicioTextIndice]
+                inicioText.innerText = inicioTextValueContainer
+                inicioTextIndice++
+                
+            }
+            else{
+                inicioTextState = "finished"
+                setTimeout(()=>{
+                    inicioText.innerText += "\nTentei fazer algo diferente"
+                    setTimeout(()=>{
+                        inicioButton.style.opacity = "1"
+                        inicioButton.style.pointerEvents = "auto"
+                    }, 700)
+                }, 500)
+                
+                
+                clearInterval(intervalo)
+            }
+        },200
+        )
+      
+        let tela1 = document.querySelector("#tela1")
+        inicioButton.addEventListener("click", ()=>{
+            inicio.style.display = "none"
+            tela1.style.display = "block"
+            
+        })
+
+
+        // TELA 1
+       
+        let texto = document.querySelector("#texto")
+        let enviar = document.querySelector("#enviar")
+
+        texto.addEventListener("focus", ()=>{
+            texto.value = ''
+        })
+
+        let tela2 = document.querySelector("#tela2")
+        let textoFinal = document.querySelector("#textofinal")
+        
+        enviar.addEventListener("click", ()=>{
+            let material = texto.value
+            tela1.style.display = "none"
+            tela2.style.display = "block"
+            textoFinal.innerText += " " + material + " \n🫣"
+        })
+
+
+
+
+        // TELA 2
+        
+
+
+         
+
+
+        
+        
+        
+    </script>
+</body>
+</html>
