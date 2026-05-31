@@ -20,18 +20,19 @@
             border: none;
             border-radius: 15px;
             cursor: pointer;
-            background-color: rgb(190, 255, 208);
+            background-color: rgb(143, 164, 224);
         }
 
-        textarea{ 
+        textarea {
             padding: 10px;
             border-radius: 6px;
             width: 100%;
             max-width: 300px;
-                }
-          
+        }
+
         #inicioText {
             margin-bottom: 20px;
+            display: block;
         }
 
         #inicioButton{
@@ -51,6 +52,22 @@
         #tela2{
             display: none;
         }
+        #tela3{
+            display: none;
+        }
+        #tela4{
+            display: none;
+        }
+
+        video{
+            width: 90%;
+            border-radius: 10px;
+        }
+        video{
+            width: 90%;
+            border-radius: 10px;
+        }
+
     </style>
 </head>
 <body>
@@ -79,18 +96,35 @@
     <div id="tela2">
 
         <p id="textofinal">
-            Então espero que o nosso amor seja tão resistente quanto 
+            Então espero que o nosso amor, hoje embionário, seja tão resistente quanto 
         </p>
 
     </div>
 
+    <div id="tela3">
+        <video id="video">
+            <source src="video.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <div id="tela4">
+        <p>
+            Aceita ser meu par nesse Dia dos Namorados?
+                            ❤️
+        </p>
+        <audio id="musica">
+            <source src="musica.mp4">
+        </audio>
+        
+    </div>
+   
     <script>
 
         //TELA INICIAL 
-
+         
         let inicio = document.querySelector("#inicio")
         let inicioText = document.querySelector("#inicioText")
-        let inicioTextValue = "Oi, fulaaaaana... 👋😊"
+        let inicioTextValue = "Oi, Claaaaaaara... 👋😊"
         let inicioTextValueContainer = ''
         let inicioTextIndice = 0
         let inicioTextState = "working"
@@ -145,19 +179,35 @@
             tela2.style.display = "block"
             textoFinal.innerText += " " + material + "... "
             textoFinal.innerText += "\n\n Porque eu realmente gosto de você. \n 😊"
+
+
+            let video = document.querySelector("#video")
+            let musica = document.querySelector("#musica")
+            setTimeout(()=>{
+                let tela3 = document.querySelector("#tela3")
+                tela3.style.display = "block"
+                tela2.style.display = "none"
+                video.play()
+                video.addEventListener("ended", ()=>{
+                    
+                        tela3.style.display = "none"
+                        document.querySelector("#tela4").style.display = "block"
+                        musica.play()
+                    
+                    
+                }, { once: true })
+
+            }, 5700)
+    
         })
 
 
 
 
         // TELA 2
-        
 
 
-         
-
-
-        
+     
         
         
     </script>
